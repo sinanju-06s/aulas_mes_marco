@@ -1,46 +1,30 @@
-// Recursive C++ program to reverse an array
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
- 
-/* Function to reverse arr[] from start to end*/
-void rvereseArray(int arr[], int start, int end)
-{
-    if (start >= end)
-    return;
-     
-    int temp = arr[start];
-    arr[start] = arr[end];
-    arr[end] = temp;
-     
-    // Recursive Function calling
-    rvereseArray(arr, start + 1, end - 1);
-}    
- 
- 
-/* Utility function to print an array */
-void printArray(int arr[], int size)
-{
-   for (int i = 0; i < size; i++)
-   cout << arr[i] << " ";
- 
-   cout << endl;
+
+
+void change_array(int arr[],int fs,int ls){
+    int temp1;
+
+    if(fs >= ls){
+        return;
+    }
+
+    temp1 = arr[ls];
+    arr[ls] = arr[fs];
+    arr[fs] = temp1;
+
+    change_array(arr,fs+1,ls-1);
+
 }
- 
-/* Driver function to test above functions */
-int main()
-{
-    int arr[] = {1, 2, 3, 4, 5, 6};
-     
-    // To print original array
-    printArray(arr, 6);
-     
-    // Function calling
-    rvereseArray(arr, 0, 5);
-     
-    cout << "Reversed array is" << endl;
-     
-    // To print the Reversed array
-    printArray(arr, 6);
-     
-    return 0;
+
+
+int main(){
+
+    int arr[5] = {1,2,3,4,5};
+
+    change_array(arr,0,4);
+
+    for(int i = 0;i<5;i++){
+        cout << arr[i] << endl;
+    }
 }
